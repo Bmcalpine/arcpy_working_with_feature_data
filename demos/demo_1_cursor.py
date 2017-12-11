@@ -1,10 +1,10 @@
 """
 
  arcpy.da.SearchCursor doc
- http://resources.arcgis.com/en/help/main/10.2/index.html#/SearchCursor/018w00000011000000/
+ http://desktop.arcgis.com/en/desktop/latest/analyze/arcpy-data-access/searchcursor-class.htm
 
  arcpy.da.UpdateCursor doc
- http://resources.arcgis.com/en/help/main/10.2/index.html#/UpdateCursor/018w00000014000000/
+ http://desktop.arcgis.com/en/desktop/latest/analyze/arcpy-data-access/updatecursor-class.htm
 
 """
 
@@ -55,6 +55,8 @@ with arcpy.da.UpdateCursor("canton",
                                    field_names = ("Canton", "area_km2","pop_2008"),
                                    where_clause = u"Canton = '{}'".format(lookup[fc_row[0]])) as tab_cursor:
             for tab_row in tab_cursor:
+                print("fc_row  : {}".format(fc_row))
+                print("tab_row : {}".format(tab_row))
                 fc_cursor.updateRow(fc_row[:1] + list(tab_row))
 
 
